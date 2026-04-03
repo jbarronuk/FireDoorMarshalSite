@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're on the list — Fire Door Marshal</title>
+    <meta name="description" content="Thanks for registering your interest in Fire Door Marshal.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --bg-soft: #f7f7f8;
+            --border-light: #f0f0f3;
+            --text: #1a1a2e;
+            --text-secondary: #555566;
+            --text-muted: #8e8e9a;
+            --accent: #e8723a;
+            --accent-light: #fff4ee;
+            --accent-hover: #d4612d;
+            --green: #22c55e;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.03em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav .nav-email {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        nav .nav-email:hover {
+            color: var(--accent);
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .thank-you {
+            text-align: center;
+            max-width: 480px;
+        }
+
+        .check-icon {
+            width: 64px;
+            height: 64px;
+            background: #f0fdf4;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .check-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--green);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .thank-you h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .thank-you p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .back-link:hover {
+            background: var(--accent-hover);
+        }
+
+        .back-link:active {
+            transform: scale(0.97);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-light);
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 1.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo">Fire Door <span>Marshal</span></a>
+    <a href="mailto:james@firedoormarshal.com" class="nav-email">james@firedoormarshal.com</a>
+</nav>
+
+<div class="content">
+    <div class="thank-you">
+        <div class="check-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h1>You're on the list</h1>
+        <p>Thanks for registering your interest. We'll drop you an email when Fire Door Marshal is ready to download.</p>
+        <a href="/" class="back-link">Back to homepage</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Fire Door Marshal</p>
+    <a href="mailto:james@firedoormarshal.com">james@firedoormarshal.com</a>
+</footer>
+
+</body>
+</html>
