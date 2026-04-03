@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Door Marshal — Fire Door Inspections, Simplified</title>
+    <meta name="description" content="Conduct fire door inspections from your phone. No complicated setup. Your first building is completely free.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --bg-soft: #f7f7f8;
+            --bg-card: #ffffff;
+            --border: #e8e8ec;
+            --border-light: #f0f0f3;
+            --text: #1a1a2e;
+            --text-secondary: #555566;
+            --text-muted: #8e8e9a;
+            --accent: #e8723a;
+            --accent-light: #fff4ee;
+            --accent-hover: #d4612d;
+            --green: #22c55e;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- NAV ---- */
+        nav {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.03em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav .nav-email {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        nav .nav-email:hover {
+            color: var(--accent);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.45rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 2rem;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.035em;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 460px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        /* ---- FORM ---- */
+        .signup-form {
+            display: flex;
+            gap: 0.6rem;
+            max-width: 430px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .signup-form input[type="email"] {
+            flex: 1;
+            min-width: 220px;
+            padding: 0.8rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            background: var(--bg);
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .signup-form input[type="email"]::placeholder {
+            color: var(--text-muted);
+        }
+
+        .signup-form input[type="email"]:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+
+        .signup-form button {
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .signup-form button:hover {
+            background: var(--accent-hover);
+        }
+
+        .signup-form button:active {
+            transform: scale(0.97);
+        }
+
+        .form-note {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .success-msg {
+            background: #f0fdf4;
+            border: 1.5px solid #bbf7d0;
+            color: #16a34a;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 500;
+            max-width: 430px;
+            margin: 0 auto;
+            text-align: center;
+            display: none;
+        }
+
+        /* ---- DIVIDER ---- */
+        .divider {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .divider hr {
+            border: none;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* ---- FEATURES ---- */
+        .features {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature {
+            background: var(--bg-soft);
+            border-radius: 14px;
+            padding: 2rem 1.75rem;
+            transition: transform 0.2s;
+        }
+
+        .feature:hover {
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .feature-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .feature h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ---- HOW IT WORKS ---- */
+        .how-section {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        .how-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.85rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: -0.03em;
+            color: var(--text);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .step h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem 2rem 5rem;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: var(--bg-soft);
+            border-radius: 20px;
+            padding: 3.5rem 2rem;
+        }
+
+        .cta-box h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.03em;
+            color: var(--text);
+        }
+
+        .cta-box p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        /* ---- FOOTER ---- */
+        footer {
+            border-top: 1px solid var(--border-light);
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 1.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover { color: var(--accent); }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .hero { padding: 3.5rem 1.5rem 3rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; gap: 2.5rem; }
+            .features, .how-section, .cta-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+            nav { padding: 1.25rem 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .signup-form input[type="email"] { min-width: 100%; }
+            .signup-form button { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo">Fire Door <span>Marshal</span></a>
+    <a href="mailto:james@firedoormarshal.com" class="nav-email">james@firedoormarshal.com</a>
+</nav>
+
+<section class="hero">
+    <div class="badge">
+        <span class="badge-dot"></span>
+        Coming soon
+    </div>
+
+    <h1>Fire door inspections, simplified</h1>
+
+    <p class="subtitle">
+        Inspect fire doors from your phone. No complicated setup, no lengthy registration. Download the app and start your first inspection in minutes.
+    </p>
+
+    <form class="signup-form" action="https://formspree.io/f/meeprgwy" method="POST">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Get early access</button>
+        <p class="form-note">Be the first to know when we launch. No spam, ever.</p>
+    </form>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="features">
+    <div class="features-grid">
+        <div class="feature">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+            </div>
+            <h3>First building free</h3>
+            <p>Inspect your first site completely free. No credit card, no trial limits. See if it works for you before you pay a penny.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Built for compliance</h3>
+            <p>Record inspection findings with the detail you need. Capture photos, note defects, and generate reports that stand up to scrutiny.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            </div>
+            <h3>No registration hurdles</h3>
+            <p>Sign up directly from the app store. No separate website, no waiting for account approval. Download, sign up, go.</p>
+        </div>
+    </div>
+</section>
+
+<section class="how-section">
+    <h2>How it works</h2>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Download the app</h3>
+            <p>Available on iPhone and Android. Sign up in under a minute directly from the app.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Add your building</h3>
+            <p>Set up your first site and start logging fire doors. Your first building is completely free.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Inspect and report</h3>
+            <p>Walk the building, record findings on your phone, and generate inspection reports when you're done.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-box">
+        <h2>Be the first to try Fire Door Marshal</h2>
+        <p>We're launching soon. Leave your email and we'll let you know when it's ready.</p>
+
+        <form class="signup-form" action="https://formspree.io/f/meeprgwy" method="POST">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Get early access</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Fire Door Marshal</p>
+    <a href="mailto:james@firedoormarshal.com">james@firedoormarshal.com</a>
+</footer>
+
+</body>
+</html>
